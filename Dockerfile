@@ -1,10 +1,8 @@
 # Docker file for gitlab CI test image
 
-FROM scratch
+FROM centos:6.6
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
-
-ADD centos-6.6-20150304_1234-docker.tar.xz /
 
 ENV SHELL /bin/bash
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
