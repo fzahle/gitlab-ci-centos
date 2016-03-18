@@ -16,7 +16,7 @@ RUN yum -y update; yum clean all \
     gcc-gfortran \
     git-all \
     curl \
-    yum install gcc gcc-c++ make openssl-devel \
+    gcc gcc-c++ make openssl-devel
 RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
   && tar -xzf openmpi-1.6.5.tar.gz \
   && cd openmpi-1.6.5 \
