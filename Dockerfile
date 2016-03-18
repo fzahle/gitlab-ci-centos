@@ -16,9 +16,8 @@ RUN yum -y update; yum clean all \
     bzip2 \
     git-all \
     curl \
-    centos-release-scl \
- && yum-config-manager --enable rhel-server-rhscl-7-rpms \
- && yum install devtoolset-3 \
+    centos-release-scl-rh \
+    devtoolset-3 \
  && scl enable devtoolset-3 bash
 RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
   && tar -xzf openmpi-1.6.5.tar.gz \
