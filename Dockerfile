@@ -16,6 +16,7 @@ RUN yum -y update; yum clean all \
     bzip2 \
     git-all \
     curl \
+    centos-release-SCL \
     centos-release-scl-rh \
     devtoolset-3 \
  && scl enable devtoolset-3 bash
