@@ -13,6 +13,7 @@ RUN yum -y update; yum clean all \
  && yum install -y -q \
     tar \
     wget \
+    bzip2 \
     gcc-gfortran \
     git-all \
     curl \
