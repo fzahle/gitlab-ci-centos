@@ -11,6 +11,7 @@ ENV PATH $CONDA_ENV_PATH/bin:$PATH
 
 RUN yum -y update; yum clean all \
  && yum install -y -q \
+    tar \
     gcc-gfortran \
     git-all \
     curl \
