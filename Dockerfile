@@ -17,7 +17,11 @@ RUN yum -y update; yum clean all \
     git-all \
     curl \
     centos-release-scl \
-    devtoolset-3 \
+    scl-utils \
+    devtoolset-3-gcc \
+    devtoolset-3-binutils \
+    devtoolset-3-gcc-gfortran \
+    devtoolset-3-gcc-c++ \
  && scl enable devtoolset-3 bash
 RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
   && tar -xzf openmpi-1.6.5.tar.gz \
