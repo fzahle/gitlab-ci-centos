@@ -15,14 +15,11 @@ RUN yum -y update; yum clean all \
     wget \
     bzip2 \
     git-all \
-    curl \
-    centos-release-scl \
-    scl-utils \
-    devtoolset-3-gcc \
-    devtoolset-3-binutils \
-    devtoolset-3-gcc-gfortran \
-    devtoolset-3-gcc-c++ \
- && scl enable devtoolset-3 bash
+ && yum -y localinstall https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-6-x86_64/download/rhscl-devtoolset-3-epel-6-x86_64.noarch.rpm
+ && yum -y install devtoolset-3-gcc devtoolset-3-binutils devtoolset-3-gcc-c++ devtoolset-3-gcc-gfortran && yum clean all
+RUN /usr/bin/scl enable devtoolset-3 true
+
+# openmpi
 RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
   && tar -xzf openmpi-1.6.5.tar.gz \
   && cd openmpi-1.6.5 \
