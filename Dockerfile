@@ -17,7 +17,7 @@ RUN yum -y update; yum clean all \
     git-all \
  && yum -y localinstall https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-6-x86_64/download/rhscl-devtoolset-3-epel-6-x86_64.noarch.rpm \
  && yum -y install devtoolset-3-toolchain && yum clean all \
- && /usr/bin/scl enable devtoolset-3 true
+ && /usr/bin/scl enable devtoolset-3 bash
  # && yum -y install devtoolset-3-gcc devtoolset-3-g++ devtoolset-3-binutils devtoolset-3-gcc-c++ devtoolset-3-gcc-gfortran && yum clean all \
 
 # openmpi
