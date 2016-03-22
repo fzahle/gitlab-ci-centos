@@ -14,11 +14,15 @@ RUN yum -y update; yum clean all \
     tar \
     wget \
     bzip2 \
-    git-all \
- && yum -y localinstall https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-6-x86_64/download/rhscl-devtoolset-3-epel-6-x86_64.noarch.rpm \
- && yum -y install devtoolset-3-toolchain && yum clean all \
+    git-all
+RUN yum -y --setopt=tsflags=nodocs install https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-6-x86_64/download/rhscl-devtoolset-3-epel-6-x86_64.noarch.rpm && \
+    yum clean all \
+ && yum install -y devtoolset-3-gcc devtoolset-3-binutils devtoolset-3-gcc-c++ devtoolset-3-gcc-gfortran && yum clean all \
  && /usr/bin/scl enable devtoolset-3 bash
- # && yum -y install devtoolset-3-gcc devtoolset-3-g++ devtoolset-3-binutils devtoolset-3-gcc-c++ devtoolset-3-gcc-gfortran && yum clean all \
+
+# add devtoolset to PATH and LD_LIBRARY_PATH
+ENV PATH=/opt/rh/devtoolset-3/root/usr/bin${PATH:+:${PATH}}
+ENV LD_LIBRARY_PATH /opt/rh/devtoolset-3/root/usr/lib64
 
 # openmpi
 RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
