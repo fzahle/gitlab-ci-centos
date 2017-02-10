@@ -1,6 +1,6 @@
 # Docker file for gitlab CI test image
 
-FROM centos:7.2
+FROM centos:7.2.1511
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
 
