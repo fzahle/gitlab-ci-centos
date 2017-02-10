@@ -1,6 +1,6 @@
 # Docker file for gitlab CI test image
 
-FROM centos:6.6
+FROM centos:7.2
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
 
@@ -18,9 +18,9 @@ RUN yum -y update; yum clean all \
     git-all \
     curl \
     gcc gcc-c++ make openssl-devel
-RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
-  && tar -xzf openmpi-1.6.5.tar.gz \
-  && cd openmpi-1.6.5 \
+RUN wget https://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-1.10.2.tar.gz \
+  && tar -xzf openmpi-1.10.2.tar.gz \
+  && cd openmpi-1.10.2 \
   && ./configure --prefix=/usr/local --disable-dlopen \
   && make all install
 
