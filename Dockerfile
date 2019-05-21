@@ -41,24 +41,15 @@ RUN conda update --quiet --yes conda \
   && /bin/bash -c "source activate py37 \
   && conda install pip numpy scipy nose hdf5"
 
-ENV PETSC_CONFIGURE_OPTIONS "--with-shared-libraries --with-fortran-interfaces=1 -with-fortran-bindings --with-fc=mpif90"
-
-RUN update-alternatives --install /usr/bin/cc cc /usr/local/bin/gcc 999 \
-  && update-alternatives --install /usr/bin/gfortran gfortran /usr/local/bin/gfortran 999 \
-  && apt-get install libblas-dev liblapack-dev -y \
-  && /bin/bash -c "source activate py27 \
+RUN /bin/bash -c "source activate py27 \
   && pip install --upgrade pip \
   && pip install Cython \
   && pip install coverage \
   && pip install mpi4py \
-  && pip install -v petsc==3.11 \
-  && pip install -v petsc4py==3.11" \
   && /bin/bash -c "source activate py37 \
   && pip install --upgrade pip \
   && pip install Cython \
   && pip install coverage \
-  && pip install mpi4py \
-  && pip install -v petsc==3.11 \
-  && pip install -v petsc4py==3.11"
+  && pip install mpi4py
 
 RUN echo 'ulimit -s unlimited' >> .bashrc
