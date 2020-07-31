@@ -2,7 +2,7 @@
 
 FROM centos:7.2.1511
 
-MAINTAINER Frederik Zahle <frza@dtu.dk>
+MAINTAINER Paul van der Laan <plaa@dtu.dk>
 
 ENV SHELL /bin/bash
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
@@ -32,24 +32,5 @@ RUN wget --quiet \
     chmod -R a+rx $CONDA_ENV_PATH
 RUN conda update --quiet --yes conda \
   && conda create -y -n py37 python=3.7 \
-  && conda create -y -n py35 python=3.5 \
-  && conda create -y -n py27 python=2.7 \
-  && /bin/bash -c "source activate py27 \
-  && conda install pip numpy scipy nose hdf5" \
-  && /bin/bash -c "source activate py35 \
-  && conda install pip numpy scipy nose hdf5" \
   && /bin/bash -c "source activate py37 \
-  && conda install pip numpy scipy nose hdf5"
-
-RUN /bin/bash -c "source activate py27 \
-  && pip install --upgrade pip \
-  && pip install Cython \
-  && pip install coverage \
-  && pip install mpi4py" \
-  && /bin/bash -c "source activate py37 \
-  && pip install --upgrade pip \
-  && pip install Cython \
-  && pip install coverage \
-  && pip install mpi4py"
-
-RUN echo 'ulimit -s unlimited' >> .bashrc
+  && conda install pip numpy scipy xarray nose"
